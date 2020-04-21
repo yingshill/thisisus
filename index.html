@@ -6,11 +6,55 @@
     <script src="index.js"></script>
 </head>
 
+<!--
+framework: 
+-Introduction
+
+
+Features
+- Comment Board
+- Stopwatch
+
+
+-->
+
+
+
 <body>
-<h1>This is Vincy and Kaki</h1>
-<div>
-    <h2>We knew each other since September, 2019</h2>
-</div>
+
+
+    <h1>Introduction</h1>
+    <p id="intro">We have been togerther since we play badmintion together,
+        being foodies, watch lists of movies, and explore the unknown.</p>
+
+
+    <!--CommentBoard-->
+    <h2>Welcome and Tell Us About you!</h2>
+    <div class="commentBoard">
+
+        <lable for="writecomment">What's in your Mind?</lable>
+        <input id="writecomment" type="text">
+
+    </div>
+
+    <!--Timer-->
+    <div class="timer">
+        <p class=display-time></p>
+
+        <script>
+            const displayTime = document.querySelector(".display-time")
+            const timer = () => {
+                const now = new Date()
+                const passed = new Date(2019, 2, 23)
+                const difference = (now - passed) / 3600000 / 24
+                displayTime.innerHTML = `We have been together: ${Math.round(difference)} Days`
+            }
+            timer()
+        </script>
+
+
+
+    </div>
 </body>
 
 </html>
