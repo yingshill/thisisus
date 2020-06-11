@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script src="https://unpkg.com/react/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+        function tick() {
+            const element = (
+                <div>
+                    <h1>Every second</h1>
+                    <ul>
+                    <li>Not updated</li>
+                    <li>Yes updated {new Date().toLocaleTimeString()}</li>
+                    </ul>
+                </div>
+            );
+            /* Even though we render the entire element every second, 
+                only the changed text will get updated.
+            */
+            ReactDOM.render(element, document.getElementById('root'));
+        }
+
+        setInterval(tick, 1000);
+    </script>
+</body>
+
+</html>

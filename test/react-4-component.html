@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script src="https://unpkg.com/react/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+        // Create component using explciit call.
+        class Component1 extends React.Component {
+            render() {
+                return <h1>This is {this.props.name}</h1>;
+            }
+        }
+
+        // Create component using JSX.
+        function Component2(props) {
+            return <h1>This is {props.name}</h1>;
+        }
+
+        // Nesting components.
+        function ComponentParent() {
+            return (
+                <div>
+                    <Component1 name="c1" />
+                    <Component2 name="c2" />
+                </div>
+            );
+        }
+
+        ReactDOM.render(
+            <ComponentParent />,
+            document.getElementById('root')
+        );
+    </script>
+</body>
+
+</html>
