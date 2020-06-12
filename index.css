@@ -48,6 +48,21 @@
     margin-bottom: 3%;
 }
 
+.little-fun {
+    position: absolute;
+    display: flex;
+    top: 8%;
+    right: 10%;
+}
+
+.little-fun i {
+    margin: 20%;
+}
+
+.little-fun i:hover {
+    opacity: 0.3;
+}
+
 .slide-container {
     width: 60%;
     margin: auto;

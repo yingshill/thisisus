@@ -1,3 +1,4 @@
+const slideshowContainer = document.querySelector(".slideshow-container")
 const slide = document.querySelector(".slide") //the first image
 const slideImgs = document.querySelectorAll(".slideshow-img") //all images
 
@@ -6,6 +7,9 @@ const slideImgs = document.querySelectorAll(".slideshow-img") //all images
 const prevBtn = document.querySelector("#prevBtn")
 const nextBtn = document.querySelector("#nextBtn")
 const seeAllBtn = document.querySelector("#seeAllBtn")
+const heartBtn = document.querySelector("#heart")
+const shareBtn = document.querySelector("#share")
+const closeBtn = document.querySelector("#close")
 
 //Counter
 let counter = 0
@@ -15,6 +19,7 @@ slide.style.transform = `translateX(0px)`
 //Button listerner
 
 nextBtn.addEventListener("click", () => {
+    heartBtn.style.color = "black"
     if (counter >= slideImgs.length - 1) return
     slide.style.transition = "transform 0.5s ease-in-out"
     counter++;
@@ -23,6 +28,7 @@ nextBtn.addEventListener("click", () => {
 })
 
 prevBtn.addEventListener("click", () => {
+    heartBtn.style.color = "black"
     if (counter <= 0) return
     slide.style.transition = "transform 0.4s ease-in-out"
     counter--;
@@ -45,11 +51,19 @@ slide.addEventListener("transitionend", () => {
 })
 
 seeAllBtn.addEventListener("click", () => {
-    const slideshowContainer = document.querySelector(".slideshow-container")
     slideshowContainer.style.display = "block"
         // returns a number, representing the viewable width of an element in pixels, including padding
 
 })
+
+heartBtn.addEventListener("click", () => {
+    heartBtn.style.color = "red"
+})
+
+closeBtn.addEventListener("click", () => {
+    slideshowContainer.style.display = "none"
+})
+
 
 /*
 
