@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script src="https://unpkg.com/react/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+        const unitNames = {
+            c: 'Celsius',
+            f: 'Fahrenheit'
+        };
+
+        function toCelsius(fahrenheit) {
+            return (fahrenheit - 32) * 5 / 9;
+        }
+
+        function toFahrenheit(celsius) {
+            return (celsius * 9 / 5) + 32;
+        }
+
+        function tryConvert(temperature, convert) {
+            const input = parseFloat(temperature);
+            if (Number.isNaN(input)) {
+                return '';
+            }
+            const output = convert(input);
+            const rounded = Math.round(output * 1000) / 1000;
+            return rounded.toString();
+        }
+
+        // This component doesn't keep temperature as state.
+        class TemperatureInput extends React.Component {
+            constructor(props) {
+                super(props);
+                this.handleChange = this.handleChange.bind(this);
+            }
+
+            handleChange(e) {
+                this.props.onTemperatureChange(this, e.target.value);
+            }
+
+            render() {
+                const temperature = this.props.temperature;
+                const unit = this.props.unit;
+                return (
+                    <fieldset>
+                        <legend>Enter temperature in {unitNames[unit]}:</legend>
+                        <input value={temperature} onChange={this.handleChange} />
+                    </fieldset>
+                );
+            }
+        }
+
+        class Calculator extends React.Component {
+            constructor(props) {
+                super(props);
+                this.handleChange = this.handleChange.bind(this);
+                this.state = { unit: 'c', temperature: '' };
+            }
+
+            handleChange(target, temperature) {
+                this.setState({ unit: target.props.unit, temperature });
+            }
+
+            render() {
+                const unit = this.state.unit;
+                const temperature = this.state.temperature;
+                const celsius = unit === 'f' ? tryConvert(temperature, toCelsius) : temperature;
+                const fahrenheit = unit === 'c' ? tryConvert(temperature, toFahrenheit) : temperature;
+
+                // Lifting temperature state from TemperatureInput to Calculator.
+                // Since props are readonly, Calculator provides change handler.
+                return (
+                    <div>
+                        <TemperatureInput
+                            unit="c"
+                            temperature={celsius}
+                            onTemperatureChange={this.handleChange}
+                        />
+                        <TemperatureInput
+                            unit="f"
+                            temperature={fahrenheit}
+                            onTemperatureChange={this.handleChange} 
+                        />
+                    </div>
+                );
+            }
+        }
+
+        ReactDOM.render(
+            <Calculator />,
+            document.getElementById('root')
+        );
+    </script>
+</body>
+
+</html>

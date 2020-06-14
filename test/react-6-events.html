@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script src="https://unpkg.com/react/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+        class FakeLink extends React.Component {
+            constructor(props) {
+                super(props);
+                // "This binding is necessary to make `this` work in the callback"
+                this.handleDrag = this.handleDrag.bind(this);
+            }
+
+            // "
+            // This syntax ensures `this` is bound within handleClick.
+            // Warning: this is *experimental* syntax.
+            // "
+            // Pass this using public class field.
+            handleClick = (e) => {
+                e.preventDefault();
+                alert(this.props.children);
+            }
+
+            // Pass this using bind.
+            handleDrag(e) {
+                console.log(this.props.href);
+            }
+
+            render() {
+                return (
+                    <a href={this.props.href} onClick={this.handleClick} onDrag={this.handleDrag}>
+                        {this.props.children}
+                    </a>
+                );
+            }
+        }
+
+        ReactDOM.render(
+            <FakeLink href='https://www.google.com'><i>Google</i></FakeLink>,
+            document.getElementById('root')
+        );
+    </script>
+</body>
+
+</html>

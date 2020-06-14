@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script src="https://unpkg.com/react/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+        class DemoForm extends React.Component {
+            constructor(props) {
+                super(props);
+                this.state = {
+                    textarea: 'Enter comment here.',
+                    select: 'red'
+                };
+
+                this.handleChange = this.handleChange.bind(this);
+                this.handleSubmit = this.handleSubmit.bind(this);
+            }
+
+            handleChange(e) {
+                let key = e.target.tagName.toLowerCase();
+                // https://stackoverflow.com/questions/29280445/reactjs-setstate-with-a-dynamic-key-name, 2020-6-13.
+                this.setState({ [key]: e.target.value });
+            }
+
+            handleSubmit(e) {
+                let data = '';
+                let state = this.state;
+                for (let key in state) {
+                    if (state.hasOwnProperty(key)) {
+                        data += state[key] + '\n';
+                    }
+                }
+                alert(data);
+                e.preventDefault();
+            }
+
+            render() {
+                return (
+                    <form onSubmit={this.handleSubmit}>
+                        <label>
+                            Text:<br />
+                            <textarea value={this.state.textarea} onChange={this.handleChange} />
+                        </label>
+                        <br />
+                        <label>
+                            Select:<br />
+                            <select value={this.state.select} onChange={this.handleChange}>
+                                <option value="red">Red</option>
+                                <option value="green">Green</option>
+                                <option value="blue">Blue</option>
+                            </select>
+                        </label>
+                        <br />
+                        <input type="submit" value="Submit" />
+                    </form>
+                );
+            }
+        }
+
+        ReactDOM.render(
+            <DemoForm />,
+            document.getElementById('root')
+        );
+    </script>
+</body>
+
+</html>
