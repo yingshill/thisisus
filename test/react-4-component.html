@@ -10,6 +10,8 @@
 <body>
     <div id="root"></div>
     <script type="text/babel">
+        // Components are capitalized.
+
         // Create component using explciit call.
         class Component1 extends React.Component {
             render() {
@@ -25,6 +27,7 @@
         // Nesting components.
         function ComponentParent() {
             return (
+                // Passing name as props.
                 <div>
                     <Component1 name="c1" />
                     <Component2 name="c2" />
