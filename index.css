@@ -28,9 +28,9 @@
 }
 
 #seeAllBtn {
-    position: absolute;
-    right: 200;
-    bottom: 150;
+    position: relative;
+    left: 800;
+    bottom: 50;
 }
 
 .slideshow-container {
@@ -100,6 +100,23 @@
     opacity: 0.5;
     cursor: pointer;
     right: 5%;
+}
+
+.bubbles {
+    display: flex;
+    position: absolute;
+    padding: 10px;
+    left: 40%;
+}
+
+.bubbles i {
+    margin: 10%;
+    color: rgb(255, 230, 102);
+    opacity: 0.1;
+}
+
+.bubbles-hili {
+    opacity: 1 !important;
 }
 
 

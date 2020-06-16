@@ -1,6 +1,7 @@
 const slideshowContainer = document.querySelector(".slideshow-container")
 const slide = document.querySelector(".slide") //the first image
 const slideImgs = document.querySelectorAll(".slideshow-img") //all images
+const bubbles = document.querySelectorAll(".bubbles i")
 
 
 //Button
@@ -22,18 +23,27 @@ nextBtn.addEventListener("click", () => {
     heartBtn.style.color = "black"
     if (counter >= slideImgs.length - 1) return
     slide.style.transition = "transform 0.5s ease-in-out"
+    console.log(counter)
+    bubbles[counter % 4].className = "fas fa-circle"
+
     counter++;
+    bubbles[counter % 4].className += " bubbles-hili"
     const size = slideImgs[0].clientWidth
     slide.style.transform = `translateX(${-size * counter}px)`
+
 })
 
 prevBtn.addEventListener("click", () => {
     heartBtn.style.color = "black"
     if (counter <= 0) return
     slide.style.transition = "transform 0.4s ease-in-out"
+    console.log(counter)
+    bubbles[counter % 4].className = "fas fa-circle"
     counter--;
+    bubbles[counter % 4].className += " bubbles-hili"
     const size = slideImgs[0].clientWidth
     slide.style.transform = `translateX(${-size * counter}px)`
+
 })
 
 slide.addEventListener("transitionend", () => {
