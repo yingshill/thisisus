@@ -1,41 +1,71 @@
 .gallery-container {
-    width: 80%;
-    margin: auto;
-    flex-wrap: wrap;
-    padding: 0 4px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 20vw);
+    grid-column-gap: 1em;
+    grid-row-gap: 1em;
 }
 
+.gallery-container figure {
+    margin: 0;
+}
 
-/* Create four equal columns that sits next to each other 
- flex combines flex-grow, flex-shrink, flex-basis
- */
-
-.column {
-    display: flex;
+.gallery__img {
     width: 100%;
-    height: 300px;
-    flex: 50%;
-    max-width: 50%;
-    padding: 0 5px;
+    height: 100%;
+    object-fit: cover;
+    cursor: pointer;
+    margin-left: 10;
+    margin-right: 10;
+    border: 5px;
+    opacity: 1;
+    transition: .5s ease;
 }
 
-.column img {
-    align-content: between;
-    margin: 8px 10px;
-    vertical-align: middle;
-    width: 50%;
-    cursor: pointer
+
+/* position the first big item */
+
+.gallery__item--1 {
+    grid-column: 1 / 2;
+    grid-row: 1 / 3;
 }
+
+
+/* create round corners for images */
+
+.gallery__img--1 {
+    border-radius: 10px 0 0 10px;
+}
+
+.gallery__img--3 {
+    border-radius: 0 10px 0 0;
+}
+
+.gallery__img--5 {
+    border-radius: 0 0 10px 0;
+}
+
+
+/* create hover overlay for images */
+
+.gallery__img:hover {
+    opacity: 0.7;
+}
+
+
+/* see all photos button */
 
 #seeAllBtn {
-    position: relative;
-    left: 800;
-    bottom: 50;
+    position: absolute;
+    top: 80%;
+    left: 80%;
+    border: 1px solid black;
+    border-radius: 5px;
 }
 
 .slideshow-container {
-    display: none;
     position: absolute;
+    display: none;
     top: 0;
     left: 0;
     width: 100%;
@@ -43,30 +73,53 @@
     background-color: rgba(255, 255, 255, 0.8);
 }
 
+.little-fun {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    top: 8%;
+    margin: auto;
+    margin-bottom: 20px;
+}
+
+#close {
+    display: grid;
+    grid-template: 1fr / 0.5fr 1.5fr;
+    margin-top: 10px;
+    margin-left: 5px;
+    width: 100px;
+    height: 40px;
+    border: 1px solid whitesmoke;
+    border-radius: 10px;
+    font-size: 15px;
+    cursor: pointer;
+    opacity: 0.8;
+}
+
 .slideshow-header {
     text-align: center;
-    margin-bottom: 3%;
 }
 
-.little-fun {
-    position: absolute;
-    display: flex;
-    top: 8%;
-    right: 10%;
+#close-text {
+    margin: auto;
+    font-size: 17px;
 }
 
-.little-fun i {
-    margin: 20%;
+#close-img {
+    margin: auto;
+    margin-left: 10px;
+    width: 15px;
+    height: 15px;
 }
 
-.little-fun i:hover {
-    opacity: 0.3;
+#close:hover {
+    opacity: 1;
 }
 
 .slide-container {
     width: 60%;
     margin: auto;
-    border: 5px solid black;
     overflow: hidden;
     position: relative;
 }
@@ -75,11 +128,18 @@
     display: flex;
     width: 100%;
     height: 500px;
+    transition: opacity 2s;
+    -webkit-transition: opacity 2s;
+    -moz-transition: opacity 2s;
+    -o-transition: opacity 2s;
 }
 
 .slideshow-img {
     width: 100%;
     vertical-align: middle;
+    object-fit: cover;
+    vertical-align: bottom;
+    opacity: 0.4;
 }
 
 #prevBtn {
@@ -90,6 +150,7 @@
     color: black;
     opacity: 0.5;
     cursor: pointer;
+    margin-top: 15%;
 }
 
 #nextBtn {
@@ -100,6 +161,8 @@
     opacity: 0.5;
     cursor: pointer;
     right: 5%;
+    visibility: visible;
+    margin-top: 15%;
 }
 
 .bubbles {

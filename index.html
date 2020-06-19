@@ -56,21 +56,30 @@ Features
     <!--photogallery -->
     <h2>Photo Gallery</h2>
     <div class="gallery-container">
-        <div class="column">
-            <img src="./pics/shark.jpeg">
-            <img src="./pics/man.jpeg">
-            <img src="./pics/woman.jpeg">
-            <img src="./pics/wolves.jpeg">
-        </div>
-        <button id="seeAllBtn">See All Photos</button>
+        <figure class="gallery__item gallery__item--1">
+            <img src="./pics/green river.jpeg" class="gallery__img gallery__img--1" alt="Image 1">
+        </figure>
+        <figure class="gallery__item gallery__item--2">
+            <img src="./pics/landscape.jpg" class="gallery__img" alt="Image 2">
+        </figure>
+        <figure class="gallery__item gallery__item--3">
+            <img src="./pics/sky.jpg" class="gallery__img gallery__img--3" alt="Image 3">
+        </figure>
+        <figure class="gallery__item gallery__item--4">
+            <img src="./pics/taipei.jpg" class="gallery__img gallery__img--4" alt="Image 4">
+        </figure>
+        <figure class="gallery__item gallery__item--5">
+            <img src="./pics/tree.jpg" class="gallery__img gallery__img--5" alt="Image 5">
+            <button id="seeAllBtn">See All Photos</button>
+        </figure>
     </div>
 
     <div class="slideshow-container">
-        <h2 class="slideshow-header">SlideShow</h2>
+
         <div class="little-fun">
+            <button id="close"><img src="./pics/close.png" id="close-img"/><span id="close-text">Close</span></button>
+            <h2 class="slideshow-header"></h2>
             <i class="fas fa-share-alt" id="share"></i>
-            <i class="far fa-heart" id="heart"></i>
-            <i class="fas fa-times" id="close"></i>
         </div>
 
         <i class="fas fa-angle-right" id="nextBtn"></i>
@@ -78,16 +87,16 @@ Features
 
         <div class="slide-container">
             <div class="slide">
-                <img class="slideshow-img" id="lastclone" src="./pics/wolves.jpeg">
-                <img class="slideshow-img" src="./pics/shark.jpeg">
-                <img class="slideshow-img" src="./pics/man.jpeg">
-                <img class="slideshow-img" src="./pics/woman.jpeg">
-                <img class="slideshow-img" src="./pics/wolves.jpeg">
-                <img class="slideshow-img" id="firstclone" src="./pics/shark.jpeg">
+                <img class="slideshow-img" src="./pics/green river.jpeg">
+                <img class="slideshow-img" src="./pics/landscape.jpg">
+                <img class="slideshow-img" src="./pics/sky.jpg">
+                <img class="slideshow-img" src="./pics/taipei.jpg">
+                <img class="slideshow-img" src="./pics/tree.jpg">
             </div>
         </div>
         <div class="bubbles">
             <i class="fas fa-circle bubbles-hili"></i>
+            <i class="fas fa-circle"></i>
             <i class="fas fa-circle"></i>
             <i class="fas fa-circle"></i>
             <i class="fas fa-circle"></i>
