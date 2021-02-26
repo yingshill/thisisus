@@ -7,6 +7,9 @@
 <link href="https://fonts.googleapis.com/css2?family=Gloria+Hallelujah&display=swap" rel="stylesheet">
 <style type="text/css">
   body { 
+    background: url('screen.png');
+    background-size: 100%;
+    color: #ff6666;
     font-family: 'Gloria Hallelujah', cursive;
   } 
   h1 { 
@@ -14,9 +17,11 @@
     line-height: 1em;
     margin-top: 0;
     text-align: center;
+    text-shadow: 1rem 1rem #666666;
   } 
   button { 
     border-radius: 50%;
+    border-width: 1rem;
     display: inline-block;
     font-family: 'Gloria Hallelujah', cursive;
   } 
@@ -28,7 +33,10 @@
   } 
 </style>
 <script type="text/javascript">
-  function handleStart(evt) {
+  function handleYes(evt) {
+    window.location.href = 'yes.html';
+  }
+  function handleNo(evt) {
     evt.preventDefault();
     var elt = document.getElementById("no");
     elt.style.position = 'fixed';
@@ -38,9 +46,11 @@
     elt.style.top = `${top}px`;
   } 
   function startup() { 
+    var elt = document.getElementById("yes");
+    elt.addEventListener("click", handleYes, false);
     var elt = document.getElementById("no");
-    elt.addEventListener("click", handleStart, false);
-    elt.addEventListener("touchstart", handleStart, false);
+    elt.addEventListener("click", handleNo, false);
+    elt.addEventListener("touchstart", handleNo, false);
   } 
   document.addEventListener("DOMContentLoaded", startup);  
 </script>
@@ -48,6 +58,6 @@
 
 <body>
 <h1>Will you marry me?</h1>
-<center><button id="yes">Yes</button><button id="no">No</button></center>
+<center><button id="yes"><b>Yes</b></button><button id="no">No</button></center>
 </body>
-</html>
+</html> 
